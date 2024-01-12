@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+		<title>Which country am I in?</title>
+		<style>
+			.container {
+				display: flex;
+				gap: 40px;
+			}
+
+			.box {
+				width: 50%;
+				padding: 20px;
+				border: 1px solid #ccc;
+				box-sizing: border-box;
+			}
+
+			.hidden {
+				display: none;
+			}
+		</style>
+</head>
+
+<body>
+	<div class="container">
+		<div class="box uk">
+			<h2>United Kingdom</h2>
+			<p>This box will only be shown if you're in the UK.</p>
+		</div>
+
+		<div class="box euro">
+			<h2>Europe</h2>
+			<p>This box will only be shown if you're in Europe.</p>
+		</div>
+	</div>
+	<div class="container">
+		<div class="box uk">
+			<h2>United Kingdom</h2>
+			<p>This box will only be shown if you're in the UK.</p>
+		</div>
+
+		<div class="box euro">
+			<h2>Europe</h2>
+			<p>This box will only be shown if you're in Europe.</p>
+		</div>
+	</div>
+
+	<script src="https://geoip-js.com/js/apis/geoip2/v2.1/geoip2.js"></script>
+	<script>
+		window.addEventListener('DOMContentLoaded', function () {
+			geoip2.country(
+				function (geoipResponse) {
+					var isoCode = geoipResponse.country.iso_code;
+					var ukBoxes = document.querySelectorAll('.uk');
+					var euroBoxes = document.querySelectorAll('.euro');
+
+					ukBoxes.forEach(function (uk, index) {
+						var euro = euroBoxes[index];
+
+						if (isoCode === 'GB') {
+							uk.classList.remove('hidden');
+							euro.classList.add('hidden');
+						} else {
+							uk.classList.add('hidden');
+							euro.classList.remove('hidden');
+						}
+					});
+				},
+				function (error) {
+					console.log('An error occurred. Please try again.');
+				}
+			);
+		});
+	</script>
+</body>
+</html>
