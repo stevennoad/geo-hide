@@ -24,9 +24,9 @@ This repository provides a quick and easy way to dynamically show or hide conten
 5. **Include geoip-js Script:**
 	 - Make sure to include the geoip-js script in the <head> of your HTML file.
 
-		```html
-		<script src="https://geoip-js.com/js/apis/geoip2/v2.1/geoip2.js"></script>
-		```
+	```html
+	<script src="https://geoip-js.com/js/apis/geoip2/v2.1/geoip2.js"></script>
+	```
 
 Contributions are welcome! If you have improvements or additions to suggest, feel free to:
 
